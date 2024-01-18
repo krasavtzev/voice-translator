@@ -1,0 +1,6 @@
+voice_env/
+files/
+cloudapi/
+/config.py
+/iam.txt
+/voice.ini

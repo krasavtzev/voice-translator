@@ -7,7 +7,7 @@ translation and voiceover into the language of
 the interlocutor.
 Программа позволяет вести диалог 2-х человек на
 разных языках с онлайн переводом на язык собеседника.
-Также можно переводить аудио файлы форматов WAV, PCM, OGG и
+Также можно переводить аудио файлы форматов WAV, OGG и
 даже Mp3! в текст.
 Author: Krasavcev V.N.
 '''
@@ -229,8 +229,8 @@ class MyWindow(QtWidgets.QWidget, voice_scr.Ui_Form):
         file_txt = QtWidgets.QFileDialog.getOpenFileName(
                    parent=window,
                    caption='Выберите аудио файл для распознавания',
-                   filter='All (*);;Audio (*.wav *.ogg *.mp3 *.pcm)',
-                   initialFilter='Audio (*.wav *.ogg *.mp3 *.pcm)')
+                   filter='All (*);;Audio (*.wav *.ogg *.mp3)',
+                   initialFilter='Audio (*.wav *.ogg *.mp3)')
         file_txt = file_txt[0]
         self.lbl_file_input.setText(file_txt)
         self.lbl_file_input.show()

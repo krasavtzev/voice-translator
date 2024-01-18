@@ -1,9 +1,9 @@
 # coding: utf-8
 
 import os
-import requests
 import json
 import logging
+import requests
 import simpleaudio as sa
 from config import env_set
 from pydub import AudioSegment
@@ -110,8 +110,8 @@ def get_token():
 
 
 def audio_f_to_str(audio, lng):
-    # пример синхронного распознавания речи из аудиофайла
-    # с помощью Python SDK SpeechKit
+    """ синхронное распознавания речи из аудиофайла
+        с помощью Python SDK SpeechKit"""
     # https://cloud.yandex.ru/docs/speechkit/sdk/python/request
     # Аутентификация через API-ключ.
 
@@ -139,7 +139,7 @@ def audio_f_to_str(audio, lng):
 
 
 def trans_text(texts, target_language):
-    # перевод строки на другой язык
+    """ перевод строки на другой язык"""
     # Яндекс переводчик
     # https://cloud.yandex.com/en-ru/docs/translate/
     body = {
@@ -159,7 +159,7 @@ def trans_text(texts, target_language):
 
 
 def str_to_audio_sdk(text, export_path, lng, voice, role):
-    # Синтез речи с помощью Python SDK
+    """ Синтез речи с помощью Python SDK"""
     # https://cloud.yandex.ru/docs/speechkit/sdk/python/synthesis
     model = model_repository.synthesis_model()
 

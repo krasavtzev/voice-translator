@@ -1,6 +1,6 @@
-import pyaudio
-import wave
 import argparse
+import wave
+import pyaudio
 import grpc
 import yandex.cloud.ai.stt.v3.stt_pb2 as stt_pb2
 import yandex.cloud.ai.stt.v3.stt_service_pb2_grpc as stt_service_pb2_grpc
@@ -15,7 +15,8 @@ audio = pyaudio.PyAudio()
 
 
 def gen(lng, RECORD_SECONDS):
-    # Задайте настройки распознавания.
+    """ Задаются настройки распознавания.
+        Распознавание речи"""
     recognize_options = stt_pb2.StreamingOptions(
       recognition_model=stt_pb2.RecognitionModelOptions(
          audio_format=stt_pb2.AudioFormatOptions(
@@ -71,17 +72,17 @@ def gen(lng, RECORD_SECONDS):
 
 
 def run(secret, lng, RECORD_SECONDS, signal):
-    # Установите соединение с сервером.
+    """ Установка соединение с сервером, авторизация."""
     cred = grpc.ssl_channel_credentials()
     channel = grpc.secure_channel('stt.api.cloud.yandex.net:443', cred)
     stub = stt_service_pb2_grpc.RecognizerStub(channel)
 
     # Отправьте данные для распознавания.
     it = stub.RecognizeStreaming(gen(lng, RECORD_SECONDS), metadata=(
-    # Параметры для авторизации с API-ключом от имени сервисного аккаунта
+        # Параметры для авторизации с API-ключом от имени сервисного аккаунта
         ('authorization', f'Api-Key {secret}'),
-    # Для авторизации с IAM-токеном используйте строку ниже
-    #    ('authorization', f'Bearer {secret}'),
+        # Для авторизации с IAM-токеном используйте строку ниже
+        #    ('authorization', f'Bearer {secret}'),
     ))
 
     # Обработайте ответы сервера и выведите результат в консоль.
@@ -116,4 +117,4 @@ if __name__ == '__main__':
     parser.add_argument('--lng', required=True, help='язык распознавания')
     parser.add_argument('--mic', required=True, help='время записи с микроф')
     args = parser.parse_args()
-    run(args.secret, args.lng, int(args.mic))
+#    run(args.secret, args.lng, int(args.mic))
