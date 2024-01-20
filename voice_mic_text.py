@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# coding: utf-8
+'''
+модули распознавания с микрофона
+'''
 import argparse
 import wave
 import pyaudio
