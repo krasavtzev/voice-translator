@@ -1,5 +1,10 @@
+#!/usr/bin/env python
 # coding: utf-8
-
+'''
+Модули получения iam-токена
+Модули распознавания из файла, перевода текста,
+синтеза речи
+'''
 import os
 import json
 import logging
@@ -97,7 +102,6 @@ def get_token():
                     'lang': 'ru-RU',
                     'folderId': id_folder}
             resp = requests.post(URL_SYN, headers=headers, data=data)
-
             if resp.status_code == 200:
                 logging.info('iam-токен еще действует')
                 return iam
@@ -179,15 +183,13 @@ iam_token = get_token()
 
 if __name__ == '__main__':
     str_ru = 'создание аудио файла из строки'
-    str_eng = 'Permission is hereby granted, free of charge, to any person)'
-    lng = 'ru-Ru'
-    lng = 'en-En'
+#    str_eng = 'Permission is hereby granted, free of charge, to any person)'
+#    lng = 'ru-Ru'
+#    lng = 'en-En'
 #    otv = str_to_audio_f(str_ru,lng)
 #    print('Аудио файл создан',otv)
 #    sound('str_to_f.wav')
-
     print(trans_text(str_ru, 'en'))
 #    print(trans_text(str_eng,'ru'))
-
 #    str1 = audio_f_to_str("audio_guest.ogg")
 #    print('Расш: ',str1)
