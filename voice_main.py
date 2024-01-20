@@ -16,10 +16,7 @@ import os
 import sys
 import subprocess
 import time
-# import threading
-# import json
 import logging
-# import requests
 from PyQt5 import QtWidgets, QtCore, QtGui
 import voice_scr
 
